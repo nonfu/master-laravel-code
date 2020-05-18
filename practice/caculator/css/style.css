@@ -1,0 +1,179 @@
+@charset "utf-8";
+.mod_lifebig {
+    padding: 40px 0
+}
+
+.mod_1b {
+    background: #f7fbfe
+}
+
+#calculator_base input, #calculator_complete input {
+    color: #fff;
+    border: 0px;
+    font-family: "microsoft yahei", Helvetica, sans-serif;
+}
+
+#calculator_base, #calculator_complete {
+    position: relative;
+    margin: 0 auto;
+    width: 529px;
+}
+
+#calculator_base_container, #calculator_complete_container {
+    width: 437px;
+    height: 448px;
+    background: url(../images/siverbg.png) no-repeat 0 0;
+}
+
+#calculator_complete_container {
+    height: 578px;
+    background-image: url(../images/siverbg2.png);
+}
+
+#base_table_main td {
+    height: 53px;
+}
+
+#complete_table_main td {
+    height: 40px;
+    *height: 38px;
+}
+
+#complete_table_more td {
+    height: 40px;
+}
+
+.calculator_table {
+    width: 100%;
+    margin: 0 auto
+}
+
+.calculator_table td {
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+    font-size: 12px;
+}
+
+.topRowCss td {
+    height: 30px;
+    *height: 32px;
+    color: #FFF;
+    padding-top: 3px;
+}
+
+#baseEprsPanel, #completeEprsPanel {
+    text-align: right;
+}
+
+.baseBtnCommonCss {
+    width: 94px;
+    height: 44px;
+    background: url(../images/d1btn.gif) no-repeat 0 -44px;
+    font-size: 14px;
+    color: #FFF;
+}
+
+.baseBtnCss1 {
+    background-image: url(../images/d0btn.gif);
+}
+
+.baseBtnCss2 {
+    background-image: url(../images/d2btn.gif);
+    font-size: 20px;
+}
+
+.baseBtnCss3 {
+    background-image: url(../images/d3btn.gif);
+    font-size: 16px;
+}
+
+.baseBtnCss4 {
+    background-image: url(../images/d4btn.gif);
+    font-size: 20px;
+}
+
+.completeBtnCommonCss {
+    width: 64px;
+    height: 34px;
+    border: 0px;
+    background: url(../images/e0btn.gif) no-repeat 0 -34px;
+    font-size: 14px;
+    color: #FFF;
+}
+
+.completeBtnCss1 {
+    background-image: url(../images/e1btn.gif);
+}
+
+.completeBtnCss2 {
+    background-image: url(../images/e3btn.gif);
+}
+
+.completeBtnCss3 {
+    background-image: url(../images/e2btn.gif);
+    font-size: 18px;
+}
+
+.completeBtnCss4 {
+    background-image: url(../images/e4btn.gif);
+    font-size: 18px;
+}
+
+.completeBtnCss5 {
+    width: 74px;
+    height: 34px;
+    background: url(../images/e5btn.jpg) no-repeat 0 -34px;
+}
+
+#calculator_base .displayCss, #calculator_complete .displayCss {
+    width: 390px;
+    height: 56px;
+    color: #000;
+    text-align: right;
+    font-size: 40px;
+    padding: 0 5px;
+    *line-height: 140%;
+}
+
+.helperBox {
+    width: 42px;
+    height: 27px;
+    color: #FFF;
+    text-align: center;
+    background-color: #CCC;
+    background: url(../images/num.gif) no-repeat;
+    margin: 0px;
+    padding: 0px;
+    *line-height: 200%;
+}
+
+.calculator_tab {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.calculator_tab ul {
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    width: 72px;
+}
+
+.calculator_tab ul li {
+    height: 33px;
+    width: 100%;
+    margin-bottom: 8px;
+    color: #FFF;
+    text-align: center;
+    cursor: pointer;
+    line-height: 33px;
+    background: url(../images/cal_tab_new.gif) no-repeat;
+}
+
+.calculator_tab ul li.selTabBottom {
+    background-position: 0 -33px;
+}
