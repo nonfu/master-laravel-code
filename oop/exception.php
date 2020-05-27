@@ -1,7 +1,6 @@
 <?php
 class IndexNotExistsException extends LogicException
 {
-
 }
 
 function getItemFromBook($book, $key)
@@ -10,7 +9,7 @@ function getItemFromBook($book, $key)
         throw new InvalidArgumentException("数组为空！");
     }
     if (!key_exists($key, $book)) {
-        throw new OutOfBoundsException("对应索引不存在！");
+        throw new IndexNotExistsException("对应索引不存在！");
     }
     return $book[$key];
 }
@@ -37,7 +36,7 @@ try {
     $val = getItemFromBook($book, 'desc');
 } catch (InvalidArgumentException $exception) {
     throw $exception;
-} catch (OutOfBoundsException $exception) {
+} catch (IndexNotExistsException $exception) {
     throw $exception;
 } finally {
     if (isset($val)) {
