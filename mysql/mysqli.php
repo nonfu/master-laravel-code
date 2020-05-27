@@ -21,6 +21,21 @@ echo '<pre>';
 var_dump($rows);*/
 
 // 获取单条结果
-$row = mysqli_fetch_row($res);
-echo '<pre>';
-var_dump($row);
+// $row = mysqli_fetch_row($res);
+// $row = mysqli_fetch_assoc($res);
+
+class Post
+{
+    public $id;
+    public $title;
+    public $content;
+    public $created_at;
+
+    public function __toString()
+    {
+        return '[#' . $this->id . ']' . $this->title;
+    }
+}
+
+$post = mysqli_fetch_object($res, Post::class);
+echo $post;
