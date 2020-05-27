@@ -8,6 +8,7 @@ $dbname = 'test';       // 使用的数据库名称
 
 // 通过 mysqli 扩展建立与 mysql 服务器的连接
 $conn = mysqli_connect($host, $user, $password, $dbname, $port);
+mysqli_set_charset($conn, 'utf8mb4');
 
 // 在连接实例上进行查询
 $sql = 'SELECT * FROM `post`';
@@ -15,5 +16,5 @@ $res = mysqli_query($conn, $sql);
 
 // 获取所有结果
 $rows = mysqli_fetch_all($res);
-var_dump($rows);
-
+echo '<pre>';
+var_dump($rows[2]);
