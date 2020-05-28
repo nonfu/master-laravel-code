@@ -66,6 +66,31 @@ class Post
         }
     }
 
+    public function batchInsert(array $items)
+    {
+        $sql = 'INSERT INTO `post` (title, content, created_at) VALUES (:title, :content, :created_at)';
+        try {
+            // 开启事务
+            $this->pdo->beginTransaction();
+            // 准备预处理语句
+            $stmt = $this->pdo->prepare($sql);
+            foreach ($items as $item) {
+                // 绑定参数值
+                $datetime = date('Y-m-d H:i:s', time());
+                $stmt->bindParam(':title', $item['title'], PDO::PARAM_STR);
+                $stmt->bindParam(':content', $item['content'], PDO::PARAM_STR);
+                $stmt->bindParam(':created_at', $datetime, PDO::PARAM_STR);
+                // 执行语句
+                $stmt->execute();
+            }
+            $this->pdo->commit(); // 提交事务
+            return $stmt->rowCount();  // 返回受影响的行数
+        } catch (PDOException $e) {
+            $this->pdo->rollBack(); // 回滚事务
+            printf("数据库批量插入失败: %s\n", $e->getMessage());
+        }
+    }
+
     public function select($id)
     {
         $sql = 'SELECT * FROM `post` WHERE id = ?';
@@ -90,7 +115,7 @@ class Post
             $stmt = $this->pdo->prepare($sql);
             // 执行语句
             $stmt->execute();
-            return $stmt->fetchAll();  // 返回所有结果集
+            return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);  // 返回所有结果集
         } catch (PDOException $e) {
             printf("数据库查询失败: %s\n", $e->getMessage());
         }
@@ -144,7 +169,7 @@ try {
 // 测试代码
 $post = new Post($pdo);
 // insert
-$title = '这是一篇测试文章🐶';
+/*$title = '这是一篇测试文章🐶';
 $content = '测试内容: 今天天气不错☀️';
 $id = $post->insert($title, $content);
 echo '文章插入成功: ' . $id . '<br>';
@@ -157,7 +182,25 @@ $affected = $post->update($id);
 echo '受影响的行数: ' . $affected . '<br>';
 // delete
 $affected = $post->delete($id);
-echo '受影响的行数: ' . $affected . '<br>';
+echo '受影响的行数: ' . $affected . '<br>';*/
+
+
+$items = [
+    [
+        'title' => '这是一篇测试文章111',
+        'content' => '测试内容'
+    ],
+    [
+        'title' => '这是一篇测试文章222',
+        'content' => '测试内容'
+    ],
+    [
+        'title' => '这是一篇测试文章333',
+        'content' => '测试内容'
+    ],
+];
+$post->batchInsert($items);
+
 // selectAll
 $items = $post->selectAll();
 print_r($items);
