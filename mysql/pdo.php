@@ -39,9 +39,11 @@ class Post
      */
     protected $pdo;
 
-    public function __construct(PDO $pdo)
+    public function __construct(PDO $pdo = null)
     {
-        $this->pdo = $pdo;
+        if ($pdo != null) {
+            $this->pdo = $pdo;
+        }
     }
 
     public function insert($title, $content)
