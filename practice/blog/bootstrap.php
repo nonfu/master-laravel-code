@@ -1,26 +1,31 @@
 <?php
+require_once 'core/Container.php';
+
 /**
  * 初始化全局配置
  */
-function initConfig()
+function bootApp(Container $container)
 {
-    $config = require 'config/app.php';
-    define("APP_NAME", $config['name']);
-    define("APP_DESC", $config['desc']);
-    define("APP_URL", $config['url']);
+    initConfig($container);
+    registerProviders($container);
 }
 
-/**
- * 从数据源中获取数据
- * @param $driver
- * @param $fallback
- * @return mixed
- */
-function getItemsFromStore($driver, $fallback) {
-    $source = "store/${driver}.php";
-    if (file_exists($source)) {
-        return require $source;
-    } else {
-        return call_user_func($fallback);
+function initConfig(Container $container) {
+    $config = require 'config/app.php';
+    $container->bind('app.name', $config['name']);
+    $container->bind('app.desc', $config['desc']);
+    $container->bind('app.url', $config['url']);
+    $container->bind('app.store', $config['store']);
+    $container->bind('app.providers', $config['providers']);
+}
+
+function registerProviders(Container $container) {
+    $providers = $container->resolve('app.providers');
+    foreach ($providers as $provider) {
+        require_once $provider;
+        $classname = basename($provider, '.php');
+        $providerInstance = new $classname($container);
+        $providerInstance->register();
     }
 }
+

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../css/style.css" type="text/css" />
     <link rel="stylesheet" href="../css/home.css" type="text/css" />
-    <title><?=APP_NAME?></title>
+    <title><?=$container->resolve('app.name')?></title>
 </head>
 
 <body id="classic-website" class="mt-main-index one-column">
@@ -15,8 +15,8 @@
         <div id="header">
             <div id="header-inner">
                 <div id="header-content">
-                    <h1><?=APP_NAME?></h1>
-                    <p><?=APP_DESC?></p>
+                    <h1><?=$container->resolve('app.name')?></h1>
+                    <p><?=$container->resolve('app.desc')?></p>
                 </div>
             </div>
         </div>
@@ -26,8 +26,8 @@
                 <div id="alpha">
                     <div id="alpha-inner">
                         <div id="page-alpha" style="margin-bottom:2em;">
-                            <?php foreach ($items as $item): ?>
-                            <p>» <a href="<?=$item['url']?>"><?=$item['title']?></a> </p>
+                            <?php foreach ($albums as $album): ?>
+                            <p>» <a href="<?=$album['url']?>"><?=$album['title']?></a> </p>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
         <div id="footer">
             <div id="footer-inner">
                 <div id="footer-content">
-                    <p><a href="<?=APP_URL?>">Contact</a> | xueyuanjun.com<span id="img_placer"></span> </p>
+                    <p><a href="<?=$container->resolve('app.url')?>">Contact</a> | xueyuanjun.com<span id="img_placer"></span> </p>
                 </div>
             </div>
         </div>
