@@ -1,6 +1,7 @@
 <?php
 require_once 'bootstrap.php';
 
+// 新增一个 IoC 容器，通过依赖注入获取对象实例
 $container = Container::getInstance();
 bootApp($container);
 
@@ -24,7 +25,16 @@ if ($_SERVER['REQUEST_URI'] == "/") {
         echo '请指定要访问的文章 ID';
         exit();
     }
-    $post = $connection->table('posts')->select(intval($_GET['id']));
+    $id = intval($_GET['id']);
+    $post = $connection->table('posts')->select($id);
+    $printer = $container->resolve(PrinterContract::class);
+    if ($container->resolve('app.editor') == 'markdown') {
+        $post['content'] = $printer->driver('markdown')->render($post['text']);
+    } else {
+        $post['content'] = $printer->render($post['html']);
+    }
+    $pageTitle = $post['title'] . ' - ' . $container->resolve('app.name');
+    $album = $connection->table('albums')->select($post['album_id']);
     include 'views/post.php';
 } else {
     header('Location: /');  // 其他无效路由都重定向到首页

@@ -26,8 +26,8 @@
                 <div id="alpha">
                     <div id="alpha-inner">
                         <div id="page-alpha" style="margin-bottom:2em;">
-                            <?php foreach ($albums as $album): ?>
-                            <p>» <a href="<?=$album['url']?>"><?=$album['title']?></a> </p>
+                            <?php foreach ($albums as $id => $album): ?>
+                            <p>» <a href="/album?id=<?=$id?>"><?=$album['title']?></a> </p>
                             <?php endforeach; ?>
                         </div>
                     </div>

@@ -11,11 +11,12 @@ function bootApp(Container $container)
 }
 
 function initConfig(Container $container) {
-    $config = require 'config/app.php';
+    $config = require __DIR__ . '/config/app.php';
     $container->bind('app.name', $config['name']);
     $container->bind('app.desc', $config['desc']);
     $container->bind('app.url', $config['url']);
     $container->bind('app.store', $config['store']);
+    $container->bind('app.editor', $config['editor']);
     $container->bind('app.providers', $config['providers']);
 }
 

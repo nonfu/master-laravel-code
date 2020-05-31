@@ -37,7 +37,7 @@ class Container
     public function resolve($key)
     {
         $value = $this->bindings[$key];
-        if (is_callable($value)) {
+        if ($value instanceof Closure) {
             return call_user_func($value);
         } else {
             return $value;

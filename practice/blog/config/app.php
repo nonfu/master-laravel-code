@@ -10,10 +10,14 @@ return [
             'array' => [
 
             ],
+            'mysql' => [
 
+            ]
         ]
     ],
+    'editor' => 'markdown',  // 支持html和markdown
     'providers' => [
-        'store/StoreProvider.php'
+        'store/StoreProvider.php',
+        'printer/PrinterProvider.php'
     ]
 ];
