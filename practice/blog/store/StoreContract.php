@@ -2,7 +2,7 @@
 
 interface StoreContract
 {
-    public function newConnection($options = []);
+    public function newConnection();
     public function table($table);
     public function select($id);
     public function selectByWhere($conditions);

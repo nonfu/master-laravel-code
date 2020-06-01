@@ -6,7 +6,7 @@ class ArrayDriver implements StoreContract
     protected $connection = [];
     protected $table;
 
-    public function newConnection($options = [])
+    public function newConnection()
     {
         $this->connection = [
             'albums' => require_once 'albums.php',

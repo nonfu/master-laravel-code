@@ -2,6 +2,7 @@
 
 $posts = [
     '1' => [
+        'id' => 1,
         'album_id' => 1,
         'title' => '这是一篇测试文章1',
         'html' => <<<'HTML'
@@ -23,10 +24,11 @@ TEXT,
         'created_at' => '2020-05-01'
     ],
     '2' => [
+        'id' => 2,
         'album_id' => 1,
         'title' => '这是一篇测试文章2',
         'html' => <<<'HTML'
-'<h1 id="toc_0">这是一篇测试文章 1</h1>
+<h1 id="toc_0">这是一篇测试文章 1</h1>
 
 <p><img src="https://qcdn.xueyuanjun.com/storage/uploads/images/gallery/2020-05/php-fullstack.jpg" alt="PHP全栈工程师"/></p>
 
@@ -44,6 +46,7 @@ TEXT,
         'created_at' => '2020-05-08'
     ],
     '3' => [
+        'id' => 3,
         'album_id' => 2,
         'title' => '这是一篇测试文章3',
         'html' => <<<'HTML'

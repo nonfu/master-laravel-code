@@ -203,6 +203,7 @@ $post->batchInsert($items);
 
 // selectAll
 $items = $post->selectAll();
+echo '<pre>';
 print_r($items);
 
 

@@ -35,7 +35,8 @@ class StoreManager
 
     protected function createMysqlDriver()
     {
-        throw new Exception('暂未实现 mysql 驱动');
+        require_once __DIR__ . '/mysql/MysqlDriver.php';
+        return new MysqlDriver($this->container->resolve('app.store')['drivers']['mysql']);
     }
 
     public function __call($method, $arguments)

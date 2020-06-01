@@ -51,10 +51,10 @@
                             <h3>最新文章</h3>
                             <ul>
 
-                                <?php foreach ($posts as $id => $post): ?>
+                                <?php foreach ($posts as $post): ?>
                                 <li class="module-list-item">
                                     <span><?=$post['created_at']?> » </span>
-                                    <a href="/post?id=<?=$id?>"><?=$post['title']?></a>
+                                    <a href="/post?id=<?=$post['id']?>"><?=$post['title']?></a>
                                 </li>
                                 <?php endforeach;?>
                             </ul>

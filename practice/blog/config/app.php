@@ -5,13 +5,18 @@ return [
     'desc' => '让学习与进取者不再孤独',
     'url'  => 'https://xueyuanjun.com',
     'store' => [
-        'default' => 'array',
+        'default' => 'mysql',
         'drivers' => [
             'array' => [
 
             ],
             'mysql' => [
-
+                'host' => '127.0.0.1',
+                'port' => 3306,
+                'dbname' => 'blog',
+                'charset' => 'utf8mb4',
+                'user' => 'root',
+                'password' => 'root',
             ]
         ]
     ],
