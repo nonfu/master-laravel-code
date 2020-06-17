@@ -1,0 +1,19 @@
+{
+    "name": "xueyuanjun/blog",
+    "description": "A php blog demo app",
+    "type": "project",
+    "license": "Apache",
+    "authors": [
+        {
+            "name": "xueyuanjun",
+            "email": "yaojinbu@outlook.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "classmap": [
+            "app"
+        ]
+    }
+}

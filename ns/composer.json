@@ -1,0 +1,19 @@
+{
+    "name": "php/test",
+    "description": "A php namespace test project",
+    "type": "project",
+    "license": "Apache",
+    "authors": [
+        {
+            "name": "xueyuanjun",
+            "email": "yaojinbu@outlook.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "classmap": [
+            "."
+        ]
+    }
+}
