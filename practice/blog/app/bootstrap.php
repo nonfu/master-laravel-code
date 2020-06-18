@@ -5,6 +5,8 @@ use App\Core\Container;
 
 /**
  * 初始化全局配置
+ * @param Container $container
+ * @return Container
  */
 function bootApp(Container $container)
 {
