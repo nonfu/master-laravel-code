@@ -9,8 +9,10 @@
             "email": "yaojinbu@outlook.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {},
+    "minimum-stability": "stable",
+    "require": {
+        "symfony/http-foundation": "^5.1"
+    },
     "autoload": {
         "classmap": [
             "app"

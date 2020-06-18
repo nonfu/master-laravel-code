@@ -2,27 +2,30 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 $container = require_once __DIR__ . '/../app/bootstrap.php';
 
+$request = \App\Http\Request::capture();
+
 $store = $container->resolve(\App\Store\StoreContract::class);
 $connection = $store->newConnection();
-// 路由分发
-if ($_SERVER['REQUEST_URI'] == "/") {
+
+// 路由分发，通过 Request 对象示例获取路径信息进行匹配
+if ($request->getPath() == '/') {
     $albums = $connection->table('albums')->selectAll();
     include __DIR__  . "/../views/home.php";
-} elseif (strpos($_SERVER['REQUEST_URI'], '/album') === 0) {
-    if (empty($_GET['id']) || !is_numeric($_GET['id'])) {
+} elseif ($request->getPath() == 'album') {
+    $id = intval($request->get('id'));
+    if (empty($id)) {
         echo '请指定要访问的专辑 ID';
         exit();
     }
-    $id = intval($_GET['id']);
     $album = $connection->table('albums')->select($id);
     $posts = $connection->table('posts')->selectByWhere(['album_id' => $id]);
     include __DIR__  . '/../views/album.php';
-} elseif (strpos($_SERVER['REQUEST_URI'], '/post') === 0) {
-    if (empty($_GET['id']) || !is_numeric($_GET['id'])) {
+} elseif ($request->getPath() == 'post') {
+    $id = intval($request->get('id'));
+    if (empty($id)) {
         echo '请指定要访问的文章 ID';
         exit();
     }
-    $id = intval($_GET['id']);
     $post = $connection->table('posts')->select($id);
     $printer = $container->resolve(\App\Printer\PrinterContract::class);
     if ($container->resolve('app.editor') == 'markdown') {
@@ -34,5 +37,7 @@ if ($_SERVER['REQUEST_URI'] == "/") {
     $album = $connection->table('albums')->select($post['album_id']);
     include __DIR__  . '/../views/post.php';
 } else {
-    header('Location: /');  // 其他无效路由都重定向到首页
+    // 改为通过 Response 对象发送重定向响应
+    $response = new \App\Http\Response('', 301, ['Location' => '/']);
+    $response->prepare($request)->send();
 }
