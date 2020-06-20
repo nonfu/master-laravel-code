@@ -32,9 +32,14 @@ class Router
         }
         $callback = $route->action;
         if (is_callable($callback)) {
+            // 通过匿名函数注册的路由回调
             call_user_func($callback, $request);
         } elseif (is_string($callback) && strpos($callback, '@') !== FALSE) {
-            // @todo 为控制器方法路由预留
+            // 通过控制器方法注册的路由回调
+            list($controller, $method) = explode('@', $callback);
+            $controller = 'App\\Controller\\' . $controller;
+            $instance = new $controller;
+            call_user_func([$instance, $method]);
         } else {
             throw new \Exception('无效的路由回调');
         }

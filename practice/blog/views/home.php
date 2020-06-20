@@ -3,9 +3,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../css/style.css" type="text/css" />
-    <link rel="stylesheet" href="../css/home.css" type="text/css" />
-    <title><?=$container->resolve('app.name')?></title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/css/home.css" type="text/css" />
+    <title><?=$pageTitle?></title>
 </head>
 
 <body id="classic-website" class="mt-main-index one-column">
@@ -15,8 +15,8 @@
         <div id="header">
             <div id="header-inner">
                 <div id="header-content">
-                    <h1><?=$container->resolve('app.name')?></h1>
-                    <p><?=$container->resolve('app.desc')?></p>
+                    <h1><?=$siteName?></h1>
+                    <p><?=$siteDesc?></p>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
         <div id="footer">
             <div id="footer-inner">
                 <div id="footer-content">
-                    <p><a href="<?=$container->resolve('app.url')?>">Contact</a> | xueyuanjun.com<span id="img_placer"></span> </p>
+                    <p><a href="<?=$siteUrl?>">Contact</a> | xueyuanjun.com<span id="img_placer"></span> </p>
                 </div>
             </div>
         </div>

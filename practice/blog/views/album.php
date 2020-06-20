@@ -5,13 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="generator" content="Movable Type  5.2.2"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" type="text/css" href="../css/album.css">
+    <link rel="stylesheet" type="text/css" href="/css/album.css">
     <style>
         body {
             background-color: #f5f5d5;
         }
     </style>
-    <title><?= $container->resolve('app.name') ?></title>
+    <title><?=$pageTitle?></title>
 </head>
 <body id="scrapbook" class="mt-main-index two-columns">
 <div id="container">
@@ -21,7 +21,7 @@
         <div id="header">
             <div id="header-inner">
                 <div id="header-content">
-                    <h1 id="header-name"><?= $container->resolve('app.name') ?></h1>
+                    <h1 id="header-name"><?=$siteName?></h1>
                 </div>
             </div>
         </div>
@@ -89,7 +89,7 @@
 
         <div id="footer">
             <div id="footer-content">
-                <p><a href="<?=$container->resolve('app.url')?>">Contact</a> | xueyuanjun.com<span id="img_placer"></span> </p>
+                <p><a href="<?=$siteUrl?>">Contact</a> | xueyuanjun.com<span id="img_placer"></span> </p>
             </div>
         </div>
 
