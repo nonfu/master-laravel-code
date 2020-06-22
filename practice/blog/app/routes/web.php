@@ -1,8 +1,6 @@
 <?php
 $router = new \App\Http\Router();
 
-$store = $container->resolve(\App\Store\StoreContract::class);
-$connection = $store->newConnection();
 $request = $container->resolve('request');
 
 $router->register('get', '/', 'HomeController@index');
@@ -11,7 +9,7 @@ $router->register('get', 'album', 'AlbumController@list');
 
 $router->register('get', 'post', 'PostController@show');
 
-$router->register(['get', 'post'], 'login', function () use ($container,  $request, $connection) {
+$router->register(['get', 'post'], 'login', function () use ($container,  $request) {
     $session = $container->resolve('session');
     if ($session->has('auth_user')) {
         // 用户已登录成功，跳转到首页
@@ -30,8 +28,8 @@ $router->register(['get', 'post'], 'login', function () use ($container,  $reque
             include __DIR__  . '/../../views/login.php';
             return;
         }
-        $user = $connection->table('users')->selectByWhere(['name' => $name]);
-        if ($user[0]['password'] == md5($password)) {
+        $user = \App\Model\User::where('name', $name)->first();
+        if ($user['password'] == md5($password)) {
             // 用户登录成功
             $session->set('auth_user', $user);
             // 跳转到首页

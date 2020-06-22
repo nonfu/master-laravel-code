@@ -31,8 +31,8 @@ class Controller
     public function __construct()
     {
         $this->container = Container::getInstance();
-        $store = $this->container->resolve(StoreContract::class);
-        $this->connection = $store->newConnection();
+        //$store = $this->container->resolve(StoreContract::class);
+        //$this->connection = $store->newConnection();
         $this->request = $this->container->resolve('request');
         $this->view = $this->container->resolve('view');
     }

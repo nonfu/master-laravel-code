@@ -1,11 +1,15 @@
 <?php
 namespace App\Model;
 
-class Album
-{
-    public $id;
-    public $title;
-    public $summary;
+use Illuminate\Database\Eloquent\Model;
 
-    public $table = 'albums';
+class Album extends Model
+{
+    public $timestamps = false;
+    public $guarded = ['id'];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

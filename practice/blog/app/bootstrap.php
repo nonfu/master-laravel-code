@@ -2,6 +2,9 @@
 namespace App;
 
 use App\Core\Container;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Events\Dispatcher;
+use Illuminate\Container\Container as IlluminateContainer;
 
 /**
  * 初始化全局配置
@@ -12,6 +15,7 @@ function bootApp(Container $container)
 {
     initConfig($container);
     registerProviders($container);
+    initDatabase($container);
     return $container;
 }
 
@@ -33,6 +37,16 @@ function registerProviders(Container $container) {
         $providerInstance = new $provider($container);
         $providerInstance->register();
     }
+}
+
+function initDatabase(Container $container)
+{
+    $capsule = new Capsule();
+    $dbConfig = $container->resolve('app.store');
+    $capsule->addConnection($dbConfig['drivers'][$dbConfig['default']]);
+    $capsule->setEventDispatcher(new Dispatcher(new IlluminateContainer));
+    $capsule->setAsGlobal();
+    $capsule->bootEloquent();
 }
 
 // 新增一个 IoC 容器，通过依赖注入获取对象实例

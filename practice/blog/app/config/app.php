@@ -11,12 +11,15 @@ return [
 
             ],
             'mysql' => [
+                'driver' => 'mysql',
                 'host' => '127.0.0.1',
                 'port' => 3306,
-                'dbname' => 'blog',
-                'charset' => 'utf8mb4',
-                'user' => 'root',
+                'database' => 'blog',
+                'username' => 'root',
                 'password' => 'root',
+                'charset' => 'utf8mb4',
+                'collation' => 'utf8mb4_general_ci',
+                'prefix'    => '',
             ]
         ]
     ],
@@ -24,7 +27,7 @@ return [
     'view.engine' => 'php',  // 视图模板引擎
     'view.path' => __DIR__ . '/../../views/',  // 视图模板根路径
     'providers' => [
-        \App\Store\StoreProvider::class,
+        //\App\Store\StoreProvider::class,
         \App\Printer\PrinterProvider::class,
         \App\View\ViewProvider::class,
     ]

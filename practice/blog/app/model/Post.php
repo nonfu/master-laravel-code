@@ -1,14 +1,15 @@
 <?php
 namespace App\Model;
 
-class Post
-{
-    public $id;
-    public $title;
-    public $html;
-    public $text;
-    public $album_id;
-    public $created_at;
+use Illuminate\Database\Eloquent\Model;
 
-    public $table = 'posts';
+class Post extends Model
+{
+    public $timestamps = false;
+    protected $guarded = ['id', 'created_at'];
+
+    public function album()
+    {
+        return $this->belongsTo(Album::class);
+    }
 }

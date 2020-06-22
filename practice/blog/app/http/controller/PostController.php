@@ -1,6 +1,9 @@
 <?php
 namespace App\Http\Controller;
 
+use App\Model\Post;
+use App\Printer\PrinterContract;
+
 class PostController extends Controller
 {
     public function show()
@@ -10,14 +13,14 @@ class PostController extends Controller
             echo '请指定要访问的文章 ID';
             exit();
         }
-        $post = $this->connection->table('posts')->select($id);
-        $printer = $this->container->resolve(\App\Printer\PrinterContract::class);
+        $post = Post::with('album')->findOrFail($id)->toArray();
+        $printer = $this->container->resolve(PrinterContract::class);
         if ($this->container->resolve('app.editor') == 'markdown') {
             $post['content'] = $printer->driver('markdown')->render($post['text']);
         } else {
             $post['content'] = $printer->render($post['html']);
         }
-        $album = $this->connection->table('albums')->select($post['album_id']);
+        $album = $post['album'];
         $pageTitle = $post['title'] . ' - ' . $this->container->resolve('app.name');
         $siteUrl = $this->container->resolve('app.url');
         $this->view->render('post.php', compact('post', 'album', 'pageTitle', 'siteUrl'));
