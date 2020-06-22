@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller;
+namespace App\Http\Controller;
 
 class PostController extends Controller
 {
