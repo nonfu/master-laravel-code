@@ -20,6 +20,6 @@ class PostController extends Controller
         $album = $this->connection->table('albums')->select($post['album_id']);
         $pageTitle = $post['title'] . ' - ' . $this->container->resolve('app.name');
         $siteUrl = $this->container->resolve('app.url');
-        include __DIR__  . '/../../views/post.php';
+        include __DIR__  . '/../../../views/post.php';
     }
 }

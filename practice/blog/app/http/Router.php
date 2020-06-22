@@ -37,7 +37,7 @@ class Router
         } elseif (is_string($callback) && strpos($callback, '@') !== FALSE) {
             // 通过控制器方法注册的路由回调
             list($controller, $method) = explode('@', $callback);
-            $controller = 'App\\Controller\\' . $controller;
+            $controller = 'App\\Http\\Controller\\' . $controller;
             $instance = new $controller;
             call_user_func([$instance, $method]);
         } else {
