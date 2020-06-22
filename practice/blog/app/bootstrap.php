@@ -22,6 +22,8 @@ function initConfig(Container $container) {
     $container->bind('app.url', $config['url']);
     $container->bind('app.store', $config['store']);
     $container->bind('app.editor', $config['editor']);
+    $container->bind('view.engine', $config['view.engine']);
+    $container->bind('view.path', $config['view.path']);
     $container->bind('app.providers', $config['providers']);
 }
 

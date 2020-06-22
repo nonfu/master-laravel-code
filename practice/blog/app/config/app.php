@@ -21,8 +21,11 @@ return [
         ]
     ],
     'editor' => 'markdown',  // 支持html和markdown
+    'view.engine' => 'php',  // 视图模板引擎
+    'view.path' => __DIR__ . '/../../views/',  // 视图模板根路径
     'providers' => [
         \App\Store\StoreProvider::class,
         \App\Printer\PrinterProvider::class,
+        \App\View\ViewProvider::class,
     ]
 ];

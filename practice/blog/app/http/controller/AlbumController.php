@@ -14,6 +14,6 @@ class AlbumController extends Controller
         $posts = $this->connection->table('posts')->selectByWhere(['album_id' => $id]);
         $pageTitle = $siteName = $this->container->resolve('app.name');
         $siteUrl = $this->container->resolve('app.url');
-        include __DIR__  . '/../../../views/album.php';
+        $this->view->render('album.php', compact('album', 'posts', 'pageTitle', 'siteName', 'siteUrl'));
     }
 }

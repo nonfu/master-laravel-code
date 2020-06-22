@@ -9,6 +9,12 @@ class HomeController extends Controller
         $pageTitle = $siteName = $this->container->resolve('app.name');
         $siteUrl = $this->container->resolve('app.url');
         $siteDesc = $this->container->resolve('app.desc');
-        include __DIR__  . "/../../../views/home.php";
+        $this->view->render('home.php', [
+            'albums' => $albums,
+            'pageTitle' => $pageTitle,
+            'siteName' => $siteName,
+            'siteDesc' => $siteDesc,
+            'siteUrl' => $siteUrl
+        ]);
     }
 }
