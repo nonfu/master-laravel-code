@@ -15,6 +15,9 @@ class AlbumController extends Controller
         }
         $album = Album::with('posts')->findOrFail($id)->toArray();
         $posts = $album['posts'];
+        array_walk($posts, function (&$post) {
+            $post['summary'] = mb_substr(strip_tags($post['html']), 0, 81) . '...';
+        });
         $pageTitle = $siteName = $this->container->resolve('app.name');
         $siteUrl = $this->container->resolve('app.url');
         $this->view->render('album.php', compact('album', 'posts', 'pageTitle', 'siteName', 'siteUrl'));

@@ -22,7 +22,8 @@ class PostController extends Controller
         }
         $album = $post['album'];
         $pageTitle = $post['title'] . ' - ' . $this->container->resolve('app.name');
+        $siteName = $this->container->resolve('app.name');
         $siteUrl = $this->container->resolve('app.url');
-        $this->view->render('post.php', compact('post', 'album', 'pageTitle', 'siteUrl'));
+        $this->view->render('post.php', compact('post', 'album', 'pageTitle', 'siteName', 'siteUrl'));
     }
 }

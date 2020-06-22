@@ -5,6 +5,7 @@ use App\Model\Album;
 
 class HomeController extends Controller
 {
+    // 应用首页
     public function index()
     {
         $albums = Album::all()->toArray();
@@ -18,5 +19,25 @@ class HomeController extends Controller
             'siteDesc' => $siteDesc,
             'siteUrl' => $siteUrl
         ]);
+    }
+
+    // 关于页面
+    public function about()
+    {
+        $pageTitle = '关于我 - ' . $this->container->resolve('app.name');
+        $siteName = $this->container->resolve('app.name');
+        $this->view->render('about.php', compact('pageTitle', 'siteName'));
+    }
+
+    // 联系表单页面
+    public function contact()
+    {
+        if ($this->request->getMethod() == 'GET') {
+            $pageTitle = '联系我 - ' . $this->container->resolve('app.name');
+            $siteName = $this->container->resolve('app.name');
+            $this->view->render('contact.php', compact('pageTitle', 'siteName'));
+        } else {
+            // @todo 处理表单提交
+        }
     }
 }
