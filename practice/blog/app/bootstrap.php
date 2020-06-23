@@ -20,15 +20,12 @@ function bootApp(Container $container)
 }
 
 function initConfig(Container $container) {
-    $config = require __DIR__ . '/config/app.php';
-    $container->bind('app.name', $config['name']);
-    $container->bind('app.desc', $config['desc']);
-    $container->bind('app.url', $config['url']);
-    $container->bind('app.store', $config['store']);
-    $container->bind('app.editor', $config['editor']);
-    $container->bind('view.engine', $config['view.engine']);
-    $container->bind('view.path', $config['view.path']);
-    $container->bind('app.providers', $config['providers']);
+    $configs = require __DIR__ . '/config/app.php';
+    foreach ($configs as $module => $config) {
+        foreach ($config as $key => $val) {
+            $container->bind($module . '.' . $key, $val);
+        }
+    }
 }
 
 function registerProviders(Container $container) {
