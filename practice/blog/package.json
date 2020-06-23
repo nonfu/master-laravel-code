@@ -17,6 +17,7 @@
     "sass-loader": "^8.0.0",
     "social-share.js": "^1.0.16",
     "startbootstrap-clean-blog": "^5.0.9",
+    "startbootstrap-sb-admin-2": "^4.1.1",
     "vue-template-compiler": "^2.6.11"
   }
 }

@@ -11,6 +11,8 @@ $router->register('get', 'album', 'AlbumController@list');
 
 $router->register('get', 'post', 'PostController@show');
 
+$router->register('get', 'admin', 'Admin\DashboardController@index');
+
 $router->register(['get', 'post'], 'login', function () use ($container,  $request) {
     $session = $container->resolve('session');
     if ($session->has('auth_user')) {

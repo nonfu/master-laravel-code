@@ -36142,20 +36142,6 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/js/bootstrap.js":
-/*!***********************************!*\
-  !*** ./resources/js/bootstrap.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-
-__webpack_require__(/*! bootstrap/dist/js/bootstrap.bundle */ "./node_modules/bootstrap/dist/js/bootstrap.bundle.js");
-
-/***/ }),
-
 /***/ "./resources/js/contact.js":
 /*!*********************************!*\
   !*** ./resources/js/contact.js ***!
@@ -36163,7 +36149,10 @@ __webpack_require__(/*! bootstrap/dist/js/bootstrap.bundle */ "./node_modules/bo
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+__webpack_require__(/*! bootstrap/dist/js/bootstrap.bundle */ "./node_modules/bootstrap/dist/js/bootstrap.bundle.js");
 
 __webpack_require__(/*! startbootstrap-clean-blog/js/jqBootstrapValidation */ "./node_modules/startbootstrap-clean-blog/js/jqBootstrapValidation.js");
 
