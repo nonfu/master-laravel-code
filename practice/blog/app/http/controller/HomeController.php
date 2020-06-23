@@ -61,7 +61,7 @@ class HomeController extends Controller
             $message->name = filter_var($name, FILTER_SANITIZE_STRING);
             $message->email = $email;
             $message->phone = $phone;
-            $message->content = $content;
+            $message->content = filter_var($content, FILTER_SANITIZE_STRING);
             $message->created_at = Carbon::now();
             if ($message->save()) {
                 (new Response('消息保存成功', 200))->send();
