@@ -32,7 +32,7 @@ $(function() {
                     message: message
                 },
                 cache: false,
-                success: function(response) {
+                success: function(resp) {
                     // Success message
                     $('#success').html("<div class='alert alert-success'>");
                     $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
@@ -44,12 +44,12 @@ $(function() {
                     //clear all fields
                     $('#contactForm').trigger("reset");
                 },
-                error: function(response) {
+                error: function(resp) {
                     // Fail message
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
-                    $('#success > .alert-danger').append($("<strong>").text("抱歉，" + firstName + "，" + response));
+                    $('#success > .alert-danger').append($("<strong>").text(resp.responseText));
                     $('#success > .alert-danger').append('</div>');
                     //clear all fields
                     $('#contactForm').trigger("reset");

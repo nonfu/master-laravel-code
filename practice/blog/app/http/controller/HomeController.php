@@ -54,7 +54,7 @@ class HomeController extends Controller
             if (!preg_match('/^1[34578]{1}\d{9}$/', $phone)) {
                 throw new ValidationException('请输入正确的手机号码');
             }
-            if (empty($message)) {
+            if (empty($content)) {
                 throw new ValidationException('消息内容不能为空');
             }
             $message = new Message();
