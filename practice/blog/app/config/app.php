@@ -2,7 +2,7 @@
 
 return [
     'app' => [
-        'name' => '学院君的个人网站',
+        'name' => '学院君',
         'desc' => '让学习与进取者不再孤独',
         'url'  => 'https://xueyuanjun.com',
         'store' => [

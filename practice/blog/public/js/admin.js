@@ -35451,6 +35451,22 @@ __webpack_require__(/*! startbootstrap-sb-admin-2/vendor/jquery-easing/jquery.ea
 
 __webpack_require__(/*! startbootstrap-sb-admin-2/js/sb-admin-2 */ "./node_modules/startbootstrap-sb-admin-2/js/sb-admin-2.js");
 
+$(function () {
+  $('#logoutBtn').click(function () {
+    $.ajax({
+      url: "/logout",
+      type: "POST",
+      success: function success(resp) {
+        var redirectUrl = window.location.domain + resp.responseText;
+        window.location = redirectUrl;
+      },
+      error: function error(resp) {
+        alert('服务器异常，退出失败，请重试');
+      }
+    });
+  });
+});
+
 /***/ }),
 
 /***/ 3:

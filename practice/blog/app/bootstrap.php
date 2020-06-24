@@ -55,14 +55,14 @@ function initDatabase(Container $container)
 // 注册全局异常处理器
 function registerExceptionHandler()
 {
-    set_exception_handler(function ($exception) {
+    set_exception_handler(function (\Throwable $exception) {
         $response = new Response();
         if ($exception instanceof ValidationException) {
             $response->setStatusCode(422);
             $response->setContent($exception->getMessage());
         } else {
             $response->setStatusCode(500);
-            $response->setContent( '服务器异常');
+            $response->setContent( '服务器异常:' . $exception->getMessage());
         }
         $response->send();
     });

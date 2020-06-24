@@ -18,6 +18,9 @@
     "autoload": {
         "classmap": [
             "app"
+        ],
+        "files": [
+            "app/helper.php"
         ]
     }
 }
