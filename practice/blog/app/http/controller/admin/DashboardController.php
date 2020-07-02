@@ -1,9 +1,7 @@
 <?php
 namespace App\Http\Controller\Admin;
 
-use App\Http\Controller\Controller;
-
-class DashboardController extends Controller
+class DashboardController extends AdminController
 {
     public function __construct()
     {
@@ -18,6 +16,11 @@ class DashboardController extends Controller
         $pageTitle = '管理后台 - ' . $this->container->resolve('app.name');
         $siteName = $this->container->resolve('app.name');
         $user = $this->session->get('auth_user');
-        $this->view->render('admin/index.php', compact('pageTitle', 'siteName', 'user'));
+        $this->view->render('admin/index.php', [
+            'pageTitle' => $pageTitle,
+            'siteName' => $siteName,
+            'user' => $user,
+            'messages' => $this->messages
+        ]);
     }
 }
