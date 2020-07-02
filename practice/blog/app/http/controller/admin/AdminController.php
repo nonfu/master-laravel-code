@@ -8,9 +8,15 @@ class AdminController extends Controller
 {
     protected $messages;
 
+    protected $authUser;
+
     public function __construct()
     {
         parent::__construct();
+        if (!$this->session->has('auth_user')) {
+            redirect('/login');
+        }
+        $this->authUser = $this->session->get('auth_user');
         $this->messages = Message::orderBy('created_at', 'desc')->limit(3)->get();
     }
 }
