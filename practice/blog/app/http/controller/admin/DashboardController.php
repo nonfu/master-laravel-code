@@ -9,7 +9,7 @@ class DashboardController extends Controller
     {
         parent::__construct();
         if (!$this->session->has('auth_user')) {
-            return redirect('/login');
+            redirect('/login');
         }
     }
 

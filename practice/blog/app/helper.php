@@ -5,5 +5,6 @@ if (!function_exists('redirect')) {
     {
         $response = new \App\Http\Response('', $statusCode, ['Location' => $route]);
         $response->send();
+        exit();
     }
 }

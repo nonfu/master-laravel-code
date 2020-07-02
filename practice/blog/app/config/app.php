@@ -29,10 +29,13 @@ return [
             //\App\Store\StoreProvider::class,
             \App\Printer\PrinterProvider::class,
             \App\View\ViewProvider::class,
-        ]
+        ],
     ],
     'view' => [
         'engine' => 'php',  // 视图模板引擎
         'path' => __DIR__ . '/../../resources/views/',  // 视图模板根路径
+    ],
+    'session' => [
+        'lifetime' => 2 * 60 * 60
     ]
 ];

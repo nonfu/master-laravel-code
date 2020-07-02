@@ -3,11 +3,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 // 启动应用
 $container = require_once __DIR__ . '/../app/bootstrap.php';
 
-// 启动 Session
-$session = new \App\Http\Session();
-$session->start();
-$container->bind('session', $session);
-
 // 获取全局请求示例
 $request = \App\Http\Request::capture();
 $container->bind('request', $request);

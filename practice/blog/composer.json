@@ -16,11 +16,11 @@
         "illuminate/events": "^7.16"
     },
     "autoload": {
-        "classmap": [
-            "app"
-        ],
         "files": [
             "app/helper.php"
+        ],
+        "classmap": [
+            "app"
         ]
     }
 }

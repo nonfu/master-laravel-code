@@ -53,7 +53,8 @@ class AuthController extends Controller
     {
         if ($this->session->has('auth_user')) {
             $this->session->remove('auth_user');
+            $this->session->invalidate();
         }
-        (new Response('/login', 200))->prepare($this->request)->send();
+        return redirect('/login');
     }
 }

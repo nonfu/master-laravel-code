@@ -13,7 +13,7 @@ $router->register('get', 'post', 'PostController@show');
 $router->register('get', 'admin', 'Admin\DashboardController@index');
 
 $router->register(['get', 'post'], 'login', 'AuthController@login');
-$router->register('post', 'login', 'AuthController@logout');
+$router->register('post', 'logout', 'AuthController@logout');
 
 return $router;
 
