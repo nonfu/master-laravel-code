@@ -5,6 +5,7 @@ return [
         'name' => '学院君',
         'desc' => '让学习与进取者不再孤独',
         'url'  => 'https://xueyuanjun.com',
+        'basePath' => __DIR__ . '/../../',
         'store' => [
             'default' => 'mysql',
             'drivers' => [

@@ -13,7 +13,7 @@ class HomeController extends Controller
     public function index()
     {
         $albums = Album::all()->toArray();
-        $pageTitle = $siteName = $this->container->resolve('app.name');
+        $pageTitle = $siteName = $this->siteName;
         $siteUrl = $this->container->resolve('app.url');
         $siteDesc = $this->container->resolve('app.desc');
         $this->view->render('home.php', [

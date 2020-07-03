@@ -35451,6 +35451,15 @@ __webpack_require__(/*! startbootstrap-sb-admin-2/vendor/jquery-easing/jquery.ea
 
 __webpack_require__(/*! startbootstrap-sb-admin-2/js/sb-admin-2 */ "./node_modules/startbootstrap-sb-admin-2/js/sb-admin-2.js");
 
+$(function () {
+  $('.btn-delete').on('click', function () {
+    $('#deleteItemId').val($(this).attr('data-id'));
+  });
+  $('#deleteItemBtn').on('click', function () {
+    $('#deleteItemForm').submit();
+  });
+});
+
 /***/ }),
 
 /***/ 3:

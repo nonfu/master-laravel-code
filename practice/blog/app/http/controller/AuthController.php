@@ -15,7 +15,7 @@ class AuthController extends Controller
             $response->prepare($this->request)->send();
             return;
         }
-        $siteName = $this->container->resolve('app.name');
+        $siteName = $this->siteName;
         $pageTitle = '登录页面 - ' . $siteName;
         if ($this->request->getMethod() == 'GET') {
             $this->view->render('admin/login.php', compact('siteName', 'pageTitle'));

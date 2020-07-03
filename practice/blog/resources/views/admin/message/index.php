@@ -29,34 +29,29 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>封面图</th>
-                                    <th>名称</th>
-                                    <th>介绍</th>
-                                    <th>操作</th>
+                                    <th>用户名</th>
+                                    <th>邮箱</th>
+                                    <th>手机号</th>
+                                    <th>消息内容</th>
+                                    <th>发送时间</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($albums as $album):?>
-                                <tr>
-                                    <td><?=$album->id?></td>
-                                    <td>
-                                        <?php if ($album->image): ?>
-                                        <img src="<?=$album->image?>" class="img-thumbnail" style="width: 15em;">
-                                        <?php endif;?>
-                                    </td>
-                                    <td><?=$album->title?></td>
-                                    <td><?=$album->summary?></td>
-                                    <td>
-                                        <a href="/admin/album/edit?id=<?=$album->id?>" role="button" class="btn btn-success">编辑</a>
-                                        <a href="#" data-toggle="modal" data-target="#deleteModal" role="button" class="btn btn-danger btn-delete" data-id="<?=$album->id?>">删除</a>
-                                    </td>
-                                </tr>
+                                <?php foreach ($all_messages as $message):?>
+                                    <tr>
+                                        <td><?=$message->id?></td>
+                                        <td><?=$message->name?></td>
+                                        <td><?=$message->email?></td>
+                                        <td><?=$message->phone?></td>
+                                        <td><?=htmlentities($message->content)?></td>
+                                        <td><?=$message->created_at?></td>
+                                    </tr>
                                 <?php endforeach;?>
                                 </tbody>
                             </table>
                         </div>
                         <?php
-                        $pageType = 'albums';
+                        $pageType = 'messages';
                         include __DIR__ . '/../pagination.php';
                         ?>
                     </div>
@@ -68,8 +63,4 @@
         </div>
         <!-- End of Main Content -->
 
-        <?php
-        $itemType = 'album';
-        include __DIR__ . '/../delete.php';
-        include __DIR__ . '/../footer.php';
-        ?>
+        <?php include __DIR__ . '/../footer.php';?>

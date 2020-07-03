@@ -10,6 +10,8 @@ class AdminController extends Controller
 
     protected $authUser;
 
+    protected $itemsPerPage = 15;
+
     public function __construct()
     {
         parent::__construct();
