@@ -21,7 +21,7 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">专辑列表</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">消息列表</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -34,6 +34,7 @@
                                     <th>手机号</th>
                                     <th>消息内容</th>
                                     <th>发送时间</th>
+                                    <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -45,6 +46,9 @@
                                         <td><?=$message->phone?></td>
                                         <td><?=htmlentities($message->content)?></td>
                                         <td><?=$message->created_at?></td>
+                                        <td>
+                                            <a href="#" data-toggle="modal" data-target="#deleteModal" role="button" class="btn btn-danger btn-delete" data-id="<?=$message->id?>">删除</a>
+                                        </td>
                                     </tr>
                                 <?php endforeach;?>
                                 </tbody>
@@ -63,4 +67,8 @@
         </div>
         <!-- End of Main Content -->
 
-        <?php include __DIR__ . '/../footer.php';?>
+        <?php
+        $itemType = 'message';
+        include __DIR__ . '/../delete.php';
+        include __DIR__ . '/../footer.php';
+        ?>

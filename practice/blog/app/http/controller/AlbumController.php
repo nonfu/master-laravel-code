@@ -18,7 +18,7 @@ class AlbumController extends Controller
         array_walk($posts, function (&$post) {
             $post['summary'] = mb_substr(strip_tags($post['html']), 0, 81) . '...';
         });
-        $pageTitle = $album->title . ' - ' . $this->siteName;
+        $pageTitle = $album['title'] . ' - ' . $this->siteName;
         $siteName = $this->siteName;
         $siteUrl = $this->container->resolve('app.url');
         $this->view->render('album.php', compact('album', 'posts', 'pageTitle', 'siteName', 'siteUrl'));

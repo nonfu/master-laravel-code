@@ -21,7 +21,7 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">专辑列表</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">文章列表</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -33,6 +33,7 @@
                                     <th>标题</th>
                                     <th>所属专辑</th>
                                     <th>发布时间</th>
+                                    <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -45,8 +46,12 @@
                                             <?php endif;?>
                                         </td>
                                         <td><?=$post->title?></td>
-                                        <td><?=$post->album->title?></td>
+                                        <td><?=$post->album ? $post->album->title : '无'?></td>
                                         <td><?=$post->created_at?></td>
+                                        <td>
+                                            <a href="/admin/post/edit?id=<?=$post->id?>" role="button" class="btn btn-success">编辑</a>
+                                            <a href="#" data-toggle="modal" data-target="#deleteModal" role="button" class="btn btn-danger btn-delete" data-id="<?=$post->id?>">删除</a>
+                                        </td>
                                     </tr>
                                 <?php endforeach;?>
                                 </tbody>
@@ -65,4 +70,8 @@
         </div>
         <!-- End of Main Content -->
 
-        <?php include __DIR__ . '/../footer.php';?>
+        <?php
+        $itemType = 'post';
+        include __DIR__ . '/../delete.php';
+        include __DIR__ . '/../footer.php';
+        ?>

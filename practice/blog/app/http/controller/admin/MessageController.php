@@ -32,6 +32,9 @@ class MessageController extends AdminController
 
     public function delete()
     {
-
+        $id = $this->request->get('id');
+        $message = Message::findOrFail($id);
+        $message->delete();
+        redirect('/admin/messages');
     }
 }
